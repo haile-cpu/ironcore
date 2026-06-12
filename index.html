@@ -9,11 +9,135 @@
       href="assets/fontawesome-free-6.7.2-web/css/all.min.css"
     />
     <link rel="stylesheet" href="css/style.css" />
+    <style>
+      /* Professional Notification Modal Styles */
+      .notification-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .notification-modal.show {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .notification-content {
+        background: white;
+        border-radius: 12px;
+        padding: 40px;
+        max-width: 400px;
+        width: 90%;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        animation: slideIn 0.4s ease;
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateY(-30px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .notification-icon {
+        font-size: 60px;
+        color: #4caf50;
+        margin-bottom: 20px;
+        animation: scaleIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+
+      @keyframes scaleIn {
+        from {
+          transform: scale(0);
+        }
+        to {
+          transform: scale(1);
+        }
+      }
+
+      .notification-title {
+        font-size: 24px;
+        font-weight: 700;
+        color: #333;
+        margin: 15px 0;
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      }
+
+      .notification-message {
+        font-size: 15px;
+        color: #666;
+        margin: 15px 0 25px 0;
+        line-height: 1.6;
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      }
+
+      .notification-btn {
+        background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+        color: white;
+        border: none;
+        padding: 12px 32px;
+        font-size: 14px;
+        font-weight: 600;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      }
+
+      .notification-btn:hover {
+        background: linear-gradient(135deg, #45a049 0%, #3d8b40 100%);
+        box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+        transform: translateY(-2px);
+      }
+
+      .notification-btn:active {
+        transform: translateY(0);
+      }
+
+      @media (max-width: 600px) {
+        .notification-content {
+          padding: 30px 20px;
+        }
+
+        .notification-icon {
+          font-size: 48px;
+        }
+
+        .notification-title {
+          font-size: 20px;
+        }
+
+        .notification-message {
+          font-size: 14px;
+        }
+      }
+    </style>
   </head>
   <body>
     <header class="site-header">
       <div class="container header-inner">
-        <a href="#" class="brand"><span>Iron</span><strong>Core</strong></a>
+        <a href="index.html" class="brand"
+          ><span>Iron</span><strong>Core</strong></a
+        >
         <input type="checkbox" id="nav-toggle" class="nav-toggle" />
         <label for="nav-toggle" class="hamburger">
           <span class="bar"></span>
@@ -37,27 +161,32 @@
       <section class="hero" aria-labelledby="hero-title">
         <div class="container hero-grid">
           <div class="hero-content">
-            <p class="eyebrow">Transform Your Body</p>
-            <h1 id="hero-title">Build Real Strength.</h1>
+            <p class="eyebrow">Train harder. Move better.</p>
+            <h1 id="hero-title">Build strength that shows up everywhere.</h1>
             <p>
-              Join IronCore Fitness and start your journey today with expert
-              coaches, modern training programs, and premium support.
+              Step into IronCore for focused coaching, serious equipment, and
+              high-energy programs built for muscle, stamina, and confidence.
             </p>
             <div class="hero-buttons">
               <a class="btn btn-primary" href="#join">Join Now</a>
               <a class="btn btn-outline" href="#program">View Program</a>
             </div>
             <ul class="stats">
-              <li><strong>1200+</strong><span>Members</span></li>
-              <li><strong>10+</strong><span>Coaches</span></li>
-              <li><strong>5+</strong><span>Years Service</span></li>
+              <li><strong>1200+</strong><span>Active Members</span></li>
+              <li><strong>10+</strong><span>Elite Coaches</span></li>
+              <li><strong>24/7</strong><span>Training Access</span></li>
             </ul>
           </div>
           <div class="hero-image">
             <img
-              src="https://images.unsplash.com/photo-1534367614274-e2c28a04b822?auto=format&fit=crop&w=1200&q=80"
-              alt="Weightlifting athlete in gym"
+              src="images/pexels-man-1282232_1920.jpg"
+              alt="Focused athlete training in the gym"
             />
+            <div class="hero-training-card">
+              <span>Today's Focus</span>
+              <strong>Strength + Conditioning</strong>
+              <p>45 minute coached session</p>
+            </div>
           </div>
         </div>
       </section>
@@ -383,7 +512,12 @@
             environment. Start your journey today!
           </p>
           <form class="form-inline" aria-label="Join email form">
-            <input type="email" placeholder="Enter your email" required />
+            <input
+              type="email"
+              placeholder="Enter your email"
+              required
+              class="input"
+            />
             <button class="btn btn-primary" type="submit">Get Started</button>
           </form>
         </div>
@@ -407,7 +541,7 @@
             <li><a href="#services">Service</a></li>
             <li><a href="#pricing">Pricing</a></li>
             <li><a href="#coaches">Coaches</a></li>
-            <li><a href="#blog">Blog</a></li>
+            <li><a href="./blog/blog.html">Blog</a></li>
           </ul>
         </div>
         <div>
@@ -431,11 +565,56 @@
       </div>
     </footer>
 
+    <!-- Notification Modal -->
+    <div id="notificationModal" class="notification-modal">
+      <div class="notification-content">
+        <div class="notification-icon">
+          <i class="fas fa-check-circle"></i>
+        </div>
+        <h3 class="notification-title">Success!</h3>
+        <p class="notification-message"></p>
+        <button class="notification-btn">Close</button>
+      </div>
+    </div>
+
     <script>
       // Mobile navigation toggle
       const navToggle = document.querySelector(".nav-toggle");
       const mainNav = document.querySelector(".main-nav");
+      const form = document.querySelector(".form-inline");
+      const inputs = document.querySelector(".input");
 
+      // Notification Modal Functions
+      const notificationModal = document.getElementById("notificationModal");
+      const notificationMessage = document.querySelector(
+        ".notification-message",
+      );
+      const notificationBtn = document.querySelector(".notification-btn");
+
+      function showNotification(message) {
+        notificationMessage.textContent = message;
+        notificationModal.classList.add("show");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeNotification() {
+        notificationModal.classList.remove("show");
+        document.body.style.overflow = "auto";
+      }
+
+      notificationBtn.addEventListener("click", closeNotification);
+      notificationModal.addEventListener("click", (e) => {
+        if (e.target === notificationModal) {
+          closeNotification();
+        }
+      });
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const inputField = inputs.value;
+        showNotification(`You'll get updates on ${inputField}. Thank you!`);
+        inputs.value = "";
+      });
       function updateMobileNav() {
         if (navToggle.checked) {
           mainNav.style.display = "block";
